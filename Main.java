@@ -3,40 +3,34 @@ import java.net.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int port = 10000;
 
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
-            System.out.println("Server listening on port " + port);
+        ServerSocket serverSocket = new ServerSocket(port);
+        System.out.println("Server listening on port " + port);
 
-            while (true) {
-                handleClient(serverSocket);
-            }
-        } catch (IOException e) {
-            System.err.println("Error starting the server: " + e.getMessage());
+        while (true) {
+            handleClient(serverSocket);
         }
     }
 
-    private static void handleClient(ServerSocket serverSocket) {
-        try (Socket clientSocket = serverSocket.accept();
-             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
+    private static void handleClient(ServerSocket serverSocket) throws IOException {
+        Socket clientSocket = serverSocket.accept();
+        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-            System.out.println("Connection accepted from " + clientSocket.getInetAddress());
+        System.out.println("Connection accepted from " + clientSocket.getInetAddress());
 
-            String line;
-            while ((line = in.readLine()) != null) {
-                if (line.equalsIgnoreCase("bye")) {
-                    out.println("bye");
-                    break;
-                }
-
-                int wordCount = WordCounter.countWords(line);
-                out.println("Word count: " + wordCount);
-                out.flush();
+        String line;
+        while ((line = in.readLine()) != null) {
+            if (line.equalsIgnoreCase("bye")) {
+                out.println("bye");
+                break;
             }
-        } catch (IOException e) {
-            System.err.println("Error communicating with the client: " + e.getMessage());
+
+            int wordCount = WordCounter.countWords(line);
+            out.println("Word count: " + wordCount);
+            out.flush();
         }
     }
 }
