@@ -3,6 +3,8 @@
 ## Descrizione
 **PA-WordCounterServer** è un'applicazione server scritta in Java che conta il numero di parole in una stringa ricevuta da un client. Il server utilizza socket per la comunicazione e supporta la gestione di più connessioni client.
 
+---
+
 ## Funzionalità
 - Accetta connessioni da client tramite socket.
 - Legge messaggi inviati dai client.
@@ -10,9 +12,13 @@
 - Risponde al client con il conteggio delle parole.
 - Termina la connessione quando il client invia il messaggio `bye`.
 
+---
+
 ## Struttura del Progetto
 - **`Main.java`**: Contiene il server principale che gestisce le connessioni client e il conteggio delle parole.
 - **`WordCounter.java`**: Classe di utilità per il conteggio delle parole in una stringa.
+
+---
 
 ## Esempio di Utilizzo
 1. Avvia il server:
