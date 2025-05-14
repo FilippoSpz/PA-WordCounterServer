@@ -17,20 +17,22 @@ public class Main {
     private static void handleClient(ServerSocket serverSocket) throws IOException {
         Socket clientSocket = serverSocket.accept();
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()), 5);
 
         System.out.println("Connection accepted from " + clientSocket.getInetAddress());
 
         String line;
         while ((line = in.readLine()) != null) {
             if (line.equalsIgnoreCase("bye")) {
-                out.println("bye");
+                out.write("bye\n");
                 break;
             }
 
             int wordCount = WordCounter.countWords(line);
-            out.println("Word count: " + wordCount);
+            out.write("Word count: " + wordCount + "\n");
+            out.write("%d%n".formatted(wordCount));
             out.flush();
         }
+        System.out.println("Connection closed from " + clientSocket.getInetAddress());
     }
 }
