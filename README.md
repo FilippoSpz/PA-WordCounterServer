@@ -1,45 +1,39 @@
 # PA-WordCounterServer
 
-## Descrizione
-**PA-WordCounterServer** è un'applicazione server scritta in Java che conta il numero di parole in una stringa ricevuta da un client. Il server utilizza socket per la comunicazione e supporta la gestione di più connessioni client.
+## Description
+**PA-WordCounterServer** is a Java-based server application that counts the number of words in a string received from a client. The server uses sockets for communication and supports handling multiple client connections.
 
 ---
 
-## Funzionalità
-- Accetta connessioni da client tramite socket.
-- Legge messaggi inviati dai client.
-- Conta il numero di parole in ogni messaggio ricevuto.
-- Risponde al client con il conteggio delle parole.
-- Termina la connessione quando il client invia il messaggio `bye`.
+## Features
+- Accepts connections from clients via socket.
+- Reads messages sent by clients.
+- Counts the number of words in each received message.
+- Responds to the client with the word count.
+- Terminates the connection when the client sends the message `bye`.
 
 ---
 
-## Struttura del Progetto
-- **`Main.java`**: Contiene il server principale che gestisce le connessioni client e il conteggio delle parole.
-- **`WordCounter.java`**: Classe di utilità per il conteggio delle parole in una stringa.
+## Project Structure
+- **`Main.java`**: Contains the main server that handles client connections and word counting.
+- **`WordCounter.java`**: Utility class for counting words in a string.
 
 ---
 
-## Esempio di Utilizzo
-1. Avvia il server:
+## Usage Example
+1. Start the server:
    ```bash
    java Main 10000
    ```
+2. onnect to the server using a client like telnet: `telnet localhost 10000`
 
-2. Connettiti al server utilizzando un client come telnet:
-   `telnet localhost 10000`
+3. Send a message to the server, for example: `Hello world!`
 
-3. Invia un messaggio al server, ad esempio:
-   `Hello world!`
+4. The server will respond: `Word count: 2`
 
-4. Il server risponderà:
-   `Word count: 2`
+5. To terminate the connection, send the message: `bye`
 
-5. Per terminare la connessione, invia il messaggio:
-   `bye`
-
-6. Il server risponderà con:
-   `bye` e chiuderà la connessione.
+6. The server will respond with: `bye` and close the connection.
 
 ## License
 
