@@ -40,3 +40,15 @@
 
 6. Il server risponderà con:
    `bye` e chiuderà la connessione.
+
+## License
+
+This project is intended for educational purposes only and is not meant for commercial use.
+
+---
+
+## Author
+
+- **Name**: [Filippo Spazzali]
+- **School**: [Università degli Studi di Trieste]
+- **Course**: [Computer Science]
